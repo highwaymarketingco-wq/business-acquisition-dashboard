@@ -1,0 +1,43 @@
+{
+  "generated_at": "2026-06-27T22:35:34.264270Z",
+  "total_targets": 3253,
+  "tier_histogram": {
+    "HOT": 0,
+    "WARM": 911,
+    "COLD": 2342
+  },
+  "source_status": [
+    {
+      "slug": "marketplaces.craigslist_fsbo",
+      "name": "marketplaces.craigslist_fsbo",
+      "category": "rescore",
+      "count": 8,
+      "outcome": "OK",
+      "reason": "rescore (no scrape)"
+    },
+    {
+      "slug": "sba_foia",
+      "name": "sba_foia",
+      "category": "rescore",
+      "count": 1674,
+      "outcome": "OK",
+      "reason": "rescore (no scrape)"
+    },
+    {
+      "slug": "directories.gbp_places+sba_foia",
+      "name": "directories.gbp_places+sba_foia",
+      "category": "rescore",
+      "count": 7,
+      "outcome": "OK",
+      "reason": "rescore (no scrape)"
+    },
+    {
+      "slug": "directories.gbp_places",
+      "name": "directories.gbp_places",
+      "category": "rescore",
+      "count": 1564,
+      "outcome": "OK",
+      "reason": "rescore (no scrape)"
+    }
+  ]
+}

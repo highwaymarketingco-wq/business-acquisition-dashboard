@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Acquisition Targets — Upstate SC / bordering NC</title>
+<style>
+  :root { --hot:#c0392b; --warm:#e67e22; --cold:#7f8c8d; --bg:#0f1419; --card:#1a2029; --fg:#e6e6e6; }
+  body { font-family: -apple-system, system-ui, sans-serif; background:var(--bg); color:var(--fg); margin:0; padding:24px; }
+  h1 { font-size:20px; margin:0 0 4px; }
+  .meta { color:#9aa; font-size:13px; margin-bottom:16px; }
+  .tiles { display:flex; gap:12px; margin-bottom:20px; }
+  .tile { background:var(--card); border-radius:10px; padding:12px 18px; }
+  .tile .n { font-size:26px; font-weight:700; }
+  .HOT { color:var(--hot); } .WARM { color:var(--warm); } .COLD { color:var(--cold); }
+  table { width:100%; border-collapse:collapse; font-size:13px; }
+  th, td { text-align:left; padding:8px 10px; border-bottom:1px solid #2a323d; }
+  th { color:#9aa; font-weight:600; cursor:pointer; }
+  .badge { padding:2px 8px; border-radius:6px; font-size:11px; font-weight:700; color:#fff; }
+  .badge.HOT { background:var(--hot); } .badge.WARM { background:var(--warm); } .badge.COLD { background:var(--cold); }
+  .sources { margin-top:24px; font-size:12px; color:#9aa; }
+  .sources td.bad { color:var(--hot); } .sources td.ok { color:#2ecc71; }
+</style>
+</head>
+<body>
+  <h1>Acquisition Targets — Upstate SC / bordering NC</h1>
+  <div class="meta" id="meta">loading…</div>
+  <div class="tiles" id="tiles"></div>
+  <table id="board"><thead><tr>
+    <th>Tier</th><th>Business</th><th>County</th><th>Industry</th>
+    <th>Tenure (yr)</th><th>Status</th><th>Est. value</th><th>SBA</th><th>Signals</th><th>Source</th>
+  </tr></thead><tbody></tbody></table>
+  <div class="sources"><h3>Source run status</h3>
+    <table id="src"><thead><tr><th>Source</th><th>Category</th><th>Count</th><th>Outcome</th><th>Reason</th></tr></thead><tbody></tbody></table>
+  </div>
+<script>
+async function load() {
+  const [targets, meta] = await Promise.all([
+    fetch('targets.json').then(r=>r.json()).catch(()=>[]),
+    fetch('run_meta.json').then(r=>r.json()).catch(()=>({})),
+  ]);
+  const h = meta.tier_histogram || {HOT:0,WARM:0,COLD:0};
+  document.getElementById('meta').textContent =
+    `Generated ${meta.generated_at||'—'} · ${meta.total_targets||targets.length} targets`;
+  document.getElementById('tiles').innerHTML = ['HOT','WARM','COLD'].map(t=>
+    `<div class="tile"><div class="n ${t}">${h[t]||0}</div><div>${t}</div></div>`).join('');
+  const tb = document.querySelector('#board tbody');
+  const order = {HOT:0,WARM:1,COLD:2};
+  targets.sort((a,b)=>(order[(a.raw?.acquire_score?.tier)]??3)-(order[(b.raw?.acquire_score?.tier)]??3));
+  tb.innerHTML = targets.map(t=>{
+    const ac=t.raw?.acquire_score||{}, c=t.raw?.calc||{};
+    const tier=ac.tier||'COLD';
+    const val=c.est_value_expected?('$'+c.est_value_expected.toLocaleString()):'—';
+    return `<tr>
+      <td><span class="badge ${tier}">${tier}</span></td>
+      <td>${t.name||'—'}</td><td>${t.county||'—'}</td><td>${t.industry||t.naics||'—'}</td>
+      <td>${t.years_in_business??'—'}</td><td>${t.listing_status||'—'}</td>
+      <td>${val}</td><td>${c.sba_financeable?'✓':''}</td>
+      <td>${(ac.signals||[]).join(', ')}</td><td>${t.source||''}</td></tr>`;
+  }).join('');
+  const sb = document.querySelector('#src tbody');
+  sb.innerHTML = (meta.source_status||[]).map(s=>{
+    const bad=['ERROR','BLOCKED','TIMEOUT'].includes(s.outcome);
+    return `<tr><td>${s.name}</td><td>${s.category}</td><td>${s.count}</td>
+      <td class="${bad?'bad':'ok'}">${s.outcome}</td><td>${s.reason||''}</td></tr>`;
+  }).join('');
+}
+load();
+</script>
+</body>
+</html>

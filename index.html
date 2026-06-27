@@ -3,67 +3,117 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Acquisition Targets — Upstate SC / bordering NC</title>
+<title>Acquisition Targets — Upstate SC / bordering NC (blue-collar)</title>
 <style>
-  :root { --hot:#c0392b; --warm:#e67e22; --cold:#7f8c8d; --bg:#0f1419; --card:#1a2029; --fg:#e6e6e6; }
-  body { font-family: -apple-system, system-ui, sans-serif; background:var(--bg); color:var(--fg); margin:0; padding:24px; }
-  h1 { font-size:20px; margin:0 0 4px; }
-  .meta { color:#9aa; font-size:13px; margin-bottom:16px; }
-  .tiles { display:flex; gap:12px; margin-bottom:20px; }
-  .tile { background:var(--card); border-radius:10px; padding:12px 18px; }
-  .tile .n { font-size:26px; font-weight:700; }
-  .HOT { color:var(--hot); } .WARM { color:var(--warm); } .COLD { color:var(--cold); }
+  :root { --bg:#0f1419; --card:#1a2029; --fg:#e6e6e6; --mut:#9aa7b4; --line:#2a323d;
+          --t1:#27ae60; --t2:#16a085; --t3:#2980b9; --t4:#7f8c8d; --t5:#566; --t6:#c0392b;
+          --warm:#e67e22; --hot:#c0392b; --cold:#5b6470; }
+  * { box-sizing:border-box; }
+  body { font-family:-apple-system,system-ui,sans-serif; background:var(--bg); color:var(--fg); margin:0; padding:20px; }
+  h1 { font-size:20px; margin:0 0 2px; } .meta { color:var(--mut); font-size:12px; margin-bottom:14px; }
+  .tiles { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:16px; }
+  .tile { background:var(--card); border-radius:9px; padding:10px 14px; min-width:92px; }
+  .tile .n { font-size:22px; font-weight:700; } .tile .l { font-size:11px; color:var(--mut); }
+  .controls { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:12px; align-items:center; }
+  input,select { background:var(--card); color:var(--fg); border:1px solid var(--line); border-radius:7px; padding:7px 10px; font-size:13px; }
+  input#q { min-width:240px; }
   table { width:100%; border-collapse:collapse; font-size:13px; }
-  th, td { text-align:left; padding:8px 10px; border-bottom:1px solid #2a323d; }
-  th { color:#9aa; font-weight:600; cursor:pointer; }
-  .badge { padding:2px 8px; border-radius:6px; font-size:11px; font-weight:700; color:#fff; }
-  .badge.HOT { background:var(--hot); } .badge.WARM { background:var(--warm); } .badge.COLD { background:var(--cold); }
-  .sources { margin-top:24px; font-size:12px; color:#9aa; }
-  .sources td.bad { color:var(--hot); } .sources td.ok { color:#2ecc71; }
+  th,td { text-align:left; padding:8px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th { color:var(--mut); font-weight:600; cursor:pointer; white-space:nowrap; position:sticky; top:0; background:var(--bg); }
+  tr:hover td { background:#151b23; }
+  .biz { font-weight:600; } .sub { color:var(--mut); font-size:11.5px; }
+  a { color:#5dade2; text-decoration:none; } a:hover { text-decoration:underline; }
+  .fit { display:inline-block; padding:2px 7px; border-radius:6px; font-size:11px; font-weight:700; color:#fff; }
+  .fit1{background:var(--t1)} .fit2{background:var(--t2)} .fit3{background:var(--t3)}
+  .fit4{background:var(--t4)} .fit5{background:var(--t5)} .fit6{background:var(--t6)}
+  .tier { font-size:10.5px; font-weight:700; }
+  .tier.WARM{color:var(--warm)} .tier.HOT{color:var(--hot)} .tier.COLD{color:var(--cold)}
+  .fin { white-space:nowrap; } .conf { font-size:10px; color:var(--mut); }
+  .dd { font-variant-numeric:tabular-nums; }
+  .star { color:#f1c40f; } .note { font-size:11px; color:var(--mut); }
+  .est { font-size:10px; color:var(--mut); font-style:italic; }
 </style>
 </head>
 <body>
-  <h1>Acquisition Targets — Upstate SC / bordering NC</h1>
+  <h1>Acquisition Targets — blue-collar, Upstate SC + bordering NC</h1>
   <div class="meta" id="meta">loading…</div>
   <div class="tiles" id="tiles"></div>
-  <table id="board"><thead><tr>
-    <th>Tier</th><th>Business</th><th>County</th><th>Industry</th>
-    <th>Tenure (yr)</th><th>Status</th><th>Est. value</th><th>SBA</th><th>Signals</th><th>Source</th>
-  </tr></thead><tbody></tbody></table>
-  <div class="sources"><h3>Source run status</h3>
-    <table id="src"><thead><tr><th>Source</th><th>Category</th><th>Count</th><th>Outcome</th><th>Reason</th></tr></thead><tbody></tbody></table>
+  <div class="controls">
+    <input id="q" placeholder="search name / trade / city / phone…">
+    <select id="fTier"><option value="">All tiers</option><option>HOT</option><option selected>WARM</option><option>COLD</option></select>
+    <select id="fFit">
+      <option value="">All fit</option>
+      <option value="1">Tier 1 — best fit</option><option value="2">Tier 2 — strong</option>
+      <option value="3">Tier 3 — bolt-on</option><option value="4">Tier 4 — lower</option>
+      <option value="5">Tier 5 — not lane</option><option value="6">Tier 6 — avoid</option>
+    </select>
+    <select id="fTrade"><option value="">All trades</option></select>
+    <select id="sort">
+      <option value="score">Sort: score</option><option value="value">Sort: est value</option>
+      <option value="rating">Sort: rating</option><option value="rev">Sort: est revenue</option>
+    </select>
+    <span class="note" id="count"></span>
   </div>
+  <table id="board"><thead><tr>
+    <th>Fit</th><th>Business</th><th>Contact</th><th>Est. financials (proxy)</th><th>Due-dil</th><th>Score</th>
+  </tr></thead><tbody></tbody></table>
+  <p class="est" style="margin-top:14px">Financials are ESTIMATES from free proxies (employees / SBA-loan size / reviews), labeled by confidence — not disclosed figures. Trade-fit tiers reflect the operator acquisition thesis. Off-market shops are sourcing leads (cold outreach), not listed-for-sale.</p>
 <script>
-async function load() {
-  const [targets, meta] = await Promise.all([
-    fetch('targets.json').then(r=>r.json()).catch(()=>[]),
-    fetch('run_meta.json').then(r=>r.json()).catch(()=>({})),
-  ]);
-  const h = meta.tier_histogram || {HOT:0,WARM:0,COLD:0};
-  document.getElementById('meta').textContent =
-    `Generated ${meta.generated_at||'—'} · ${meta.total_targets||targets.length} targets`;
-  document.getElementById('tiles').innerHTML = ['HOT','WARM','COLD'].map(t=>
-    `<div class="tile"><div class="n ${t}">${h[t]||0}</div><div>${t}</div></div>`).join('');
-  const tb = document.querySelector('#board tbody');
-  const order = {HOT:0,WARM:1,COLD:2};
-  targets.sort((a,b)=>(order[(a.raw?.acquire_score?.tier)]??3)-(order[(b.raw?.acquire_score?.tier)]??3));
-  tb.innerHTML = targets.map(t=>{
-    const ac=t.raw?.acquire_score||{}, c=t.raw?.calc||{};
-    const tier=ac.tier||'COLD';
-    const val=c.est_value_expected?('$'+c.est_value_expected.toLocaleString()):'—';
+const $=s=>document.querySelector(s);
+const money=v=>(v||v===0)?'$'+Math.round(v).toLocaleString():'';
+const raw=t=>t.raw||{};
+let ROWS=[];
+
+function row(t){
+  const r=raw(t), ac=r.acquire_score||{}, c=r.calc||{}, f=r.trade_fit||{}, dd=r.due_diligence||{}, re=r.revenue_est||{};
+  return {
+    t, tier:ac.tier||'COLD', score:ac.score||0, fit:f.tier||4, fitLabel:f.label||'', fitNote:f.note||'',
+    name:t.name||'—', trade:t.industry||r.industry_bucket||t.naics_description||'—',
+    loc:[t.city,t.state].filter(Boolean).join(', '), owner:t.owner_name||'',
+    rating:t.google_rating||0, phone:t.phone||'', web:t.website||'',
+    rev:t.revenue||0, sde:c.sde_used||0, vlo:c.fair_value_low||0, vhi:c.fair_value_high||0,
+    conf:(re.confidence||c.confidence||'').toLowerCase(), sba:!!c.sba_financeable,
+    ddk:dd.known==null?null:dd.known, ddt:dd.total||8, source:(t.source||'').split('.').pop(),
+    listed:(t.asking_price||0)>0, ask:t.asking_price||0,
+  };
+}
+function render(){
+  const q=$('#q').value.toLowerCase(), ft=$('#fTier').value, ff=$('#fFit').value, ftr=$('#fTrade').value, sk=$('#sort').value;
+  let rows=ROWS.filter(r=>
+    (!ft||r.tier===ft) && (!ff||String(r.fit)===ff) && (!ftr||r.trade===ftr) &&
+    (!q || (r.name+' '+r.trade+' '+r.loc+' '+r.phone+' '+r.owner).toLowerCase().includes(q)));
+  const key={score:r=>r.score, value:r=>r.vhi, rating:r=>r.rating, rev:r=>r.rev}[sk];
+  rows.sort((a,b)=>key(b)-key(a) || b.score-a.score);
+  $('#count').textContent=rows.length.toLocaleString()+' shown';
+  $('#board tbody').innerHTML=rows.slice(0,1500).map(r=>{
+    const val=(r.vlo&&r.vhi)?money(r.vlo)+'–'+money(r.vhi):'';
+    const fin=[r.rev?('Rev '+money(r.rev)):'', r.sde?('SDE '+money(r.sde)):'', val?('Val '+val):''].filter(Boolean).join(' · ');
+    const ask=r.listed?('<div class="sub">asking '+money(r.ask)+'</div>'):'';
     return `<tr>
-      <td><span class="badge ${tier}">${tier}</span></td>
-      <td>${t.name||'—'}</td><td>${t.county||'—'}</td><td>${t.industry||t.naics||'—'}</td>
-      <td>${t.years_in_business??'—'}</td><td>${t.listing_status||'—'}</td>
-      <td>${val}</td><td>${c.sba_financeable?'✓':''}</td>
-      <td>${(ac.signals||[]).join(', ')}</td><td>${t.source||''}</td></tr>`;
+      <td><span class="fit fit${r.fit}" title="${r.fitNote}">T${r.fit}</span><div class="tier ${r.tier}">${r.tier}</div></td>
+      <td><div class="biz">${r.name}</div><div class="sub">${r.trade} · ${r.loc}${r.owner?(' · '+r.owner):''}</div><div class="sub">${r.fitLabel}</div></td>
+      <td>${r.rating?('<span class="star">★</span>'+r.rating+' '):''}${r.phone?('<div>'+r.phone+'</div>'):''}${r.web?('<a href="'+r.web+'" target="_blank" rel="noopener">website</a>'):''}</td>
+      <td class="fin">${fin||'<span class="sub">—</span>'}${r.sba?' <span class="sub">· SBA✓</span>':''}${r.conf?(' <span class="conf">('+r.conf+')</span>'):''}${ask}</td>
+      <td class="dd">${r.ddk!=null?(r.ddk+'/'+r.ddt):'—'}</td>
+      <td>${r.score}</td></tr>`;
   }).join('');
-  const sb = document.querySelector('#src tbody');
-  sb.innerHTML = (meta.source_status||[]).map(s=>{
-    const bad=['ERROR','BLOCKED','TIMEOUT'].includes(s.outcome);
-    return `<tr><td>${s.name}</td><td>${s.category}</td><td>${s.count}</td>
-      <td class="${bad?'bad':'ok'}">${s.outcome}</td><td>${s.reason||''}</td></tr>`;
-  }).join('');
+}
+async function load(){
+  const [t,m]=await Promise.all([fetch('targets.json').then(r=>r.json()).catch(()=>[]),
+                                 fetch('run_meta.json').then(r=>r.json()).catch(()=>({}))]);
+  ROWS=t.map(row);
+  const by=k=>ROWS.filter(k).length;
+  $('#meta').textContent=`Generated ${m.generated_at||'—'} · ${ROWS.length.toLocaleString()} businesses · live`;
+  const tiles=[
+    ['Total',ROWS.length],['WARM',by(r=>r.tier==='WARM')],
+    ['Tier 1',by(r=>r.fit===1)],['Tier 2',by(r=>r.fit===2)],['Tier 3',by(r=>r.fit===3)],
+    ['w/ phone',by(r=>r.phone)],['w/ financials',by(r=>r.rev)],['for sale',by(r=>r.listed)],
+  ];
+  $('#tiles').innerHTML=tiles.map(([l,n])=>`<div class="tile"><div class="n">${n.toLocaleString()}</div><div class="l">${l}</div></div>`).join('');
+  const trades=[...new Set(ROWS.map(r=>r.trade))].filter(x=>x&&x!=='—').sort();
+  $('#fTrade').innerHTML='<option value="">All trades</option>'+trades.map(x=>`<option>${x}</option>`).join('');
+  ['#q','#fTier','#fFit','#fTrade','#sort'].forEach(s=>$(s).addEventListener('input',render));
+  render();
 }
 load();
 </script>

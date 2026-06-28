@@ -1,171 +1,75 @@
 {
-  "generated_at": "2026-06-28T01:37:35.255226Z",
-  "total_targets": 3808,
+  "generated_at": "2026-06-28T04:25:18.793822Z",
+  "total_targets": 3745,
   "tier_histogram": {
     "HOT": 0,
-    "WARM": 959,
-    "COLD": 2849
+    "WARM": 906,
+    "COLD": 2839
   },
   "source_status": [
     {
-      "slug": "marketplaces.bizbuysell",
-      "name": "BizBuySell (SC/NC for-sale)",
-      "category": "marketplace",
-      "count": 0,
-      "outcome": "DORMANT",
-      "reason": "disabled: Akamai WAF 403s robots.txt/sitemap/listings to automated fetch (verified 2026-06). WAF defeat is out of scope."
-    },
-    {
-      "slug": "marketplaces.bizquest",
-      "name": "BizQuest (SC business-for-sale listings)",
-      "category": "marketplace",
-      "count": 41,
+      "slug": "directories.gbp_places+sba_foia+sba_foia",
+      "name": "directories.gbp_places+sba_foia+sba_foia",
+      "category": "rescore",
+      "count": 6,
       "outcome": "OK",
-      "reason": ""
+      "reason": "rescore (no scrape)"
     },
     {
-      "slug": "marketplaces.businessesforsale",
-      "name": "BusinessesForSale.com (SC/NC full financials)",
-      "category": "marketplace",
-      "count": 0,
-      "outcome": "ZERO_RESULT",
-      "reason": "ran clean but returned 0 rows"
-    },
-    {
-      "slug": "marketplaces.craigslist_fsbo",
-      "name": "Craigslist Businesses For Sale (by owner)",
-      "category": "marketplace",
-      "count": 21,
+      "slug": "directories.gbp_places+sba_foia+licenses.nc_license_trades+sba_foia",
+      "name": "directories.gbp_places+sba_foia+licenses.nc_license_trades+sba_foia",
+      "category": "rescore",
+      "count": 1,
       "outcome": "OK",
-      "reason": ""
+      "reason": "rescore (no scrape)"
     },
     {
-      "slug": "brokers.dealstream",
-      "name": "DealStream (businesses for sale)",
-      "category": "brokers",
-      "count": 0,
-      "outcome": "DORMANT",
-      "reason": "disabled: DataDome CAPTCHA wall: every request (incl. /robots.txt) returns HTTP 403 with a geo.captcha-delivery.com challenge to curl-cffi chrome + render (verified 2026-06). CAPTCHA defeat is out of scope. NOT_VIABLE."
-    },
-    {
-      "slug": "brokers.loopnet_businesses",
-      "name": "LoopNet (businesses for sale)",
-      "category": "brokers",
-      "count": 0,
-      "outcome": "DORMANT",
-      "reason": "disabled: Akamai shell: /biz/ returns a ~2.5KB JS interstitial (no listing data) to curl-cffi chrome AND to the local stealth render (verified 2026-06). Same Akamai wall as BizBuySell. NOT_VIABLE without WAF defeat."
-    },
-    {
-      "slug": "brokers.murphy",
-      "name": "Murphy Business Sales",
-      "category": "brokers",
-      "count": 0,
-      "outcome": "DORMANT",
-      "reason": "disabled: Server-side bot block: murphybusiness.com/listings returns HTTP 503 to curl-cffi chrome on every path/UA tried (verified 2026-06). Re-probe later; may be transient or geo/UA-gated. Currently NOT_VIABLE."
-    },
-    {
-      "slug": "brokers.sunbelt",
-      "name": "Sunbelt Network (business brokers)",
-      "category": "brokers",
-      "count": 0,
-      "outcome": "DORMANT",
-      "reason": "disabled: MAYBE (render-dependent): sunbeltnetwork.com returns HTTP 200 but the listing grid is client-hydrated \u2014 raw HTML carries no asking-price / cash-flow text, and the WP REST API exposes no business-listing post type (verified 2026-06). Needs a Scrapling render pass + per-listing detail parse; enable once that path is built and smoke-tested."
-    },
-    {
-      "slug": "brokers.transworld",
-      "name": "Transworld Business Advisors",
-      "category": "brokers",
-      "count": 0,
-      "outcome": "DORMANT",
-      "reason": "disabled: MAYBE (render-dependent): tworld.com listing + per-location pages are ~1MB JS shells with ZERO server-rendered listing data / dollar amounts (verified 2026-06). No public XHR/JSON endpoint discovered. Needs a render pass or a found API before enabling. NOTE: Transworld inventory is ALSO syndicated to BusinessesForSale.com (us.businessesforsale.com/us/agents/transworld-*), which IS scrapable \u2014 prefer that path."
-    },
-    {
-      "slug": "brokers.wesellrestaurants",
-      "name": "We Sell Restaurants",
-      "category": "brokers",
-      "count": 0,
-      "outcome": "DORMANT",
-      "reason": "disabled: MAYBE (render-dependent): wesellrestaurants.com state pages return HTTP 200 but listing cards + financials are client-hydrated (no price/cash-flow text and no detail-listing slugs in raw HTML, verified 2026-06). Needs a render pass; restaurant-only niche, lower priority than BusinessesForSale."
-    },
-    {
-      "slug": "sba_foia",
-      "name": "SBA 7(a)/504 FOIA loan register",
-      "category": "",
-      "count": 1919,
+      "slug": "licenses.nc_license_trades+sba_foia",
+      "name": "licenses.nc_license_trades+sba_foia",
+      "category": "rescore",
+      "count": 1,
       "outcome": "OK",
-      "reason": ""
+      "reason": "rescore (no scrape)"
     },
     {
-      "slug": "sos.nc_entities",
-      "name": "NC SOS Business Registration",
-      "category": "sos",
-      "count": 0,
-      "outcome": "DORMANT",
-      "reason": "disabled: sosnc.gov search/reports 403 to automated fetches + policy forbids scripted searches (verified 2026-06); bulk is a paid subscription."
-    },
-    {
-      "slug": "sos.sc_entities",
-      "name": "SC SOS Business Entities",
-      "category": "sos",
-      "count": 0,
-      "outcome": "DORMANT",
-      "reason": "disabled: businessfilings.sc.gov search is reCAPTCHA-gated (verified 2026-06); no free bulk/API. CAPTCHA defeat is out of scope."
-    },
-    {
-      "slug": "abc.nc_permits",
-      "name": "NC ABC Permit Holders",
-      "category": "abc",
-      "count": 0,
-      "outcome": "ZERO_RESULT",
-      "reason": "ran clean but returned 0 rows"
-    },
-    {
-      "slug": "abc.sc_abl",
-      "name": "SC ABL License Holders",
-      "category": "abc",
-      "count": 0,
-      "outcome": "DORMANT",
-      "reason": "disabled: SC ABL lookup routes through MyDORWAY portal (302); no downloadable roster. Confirm a no-login/no-CAPTCHA portal path before enabling."
-    },
-    {
-      "slug": "licenses.greenville_city",
-      "name": "City of Greenville Business Licenses",
-      "category": "license",
-      "count": 0,
-      "outcome": "ZERO_RESULT",
-      "reason": "ran clean but returned 0 rows"
+      "slug": "directories.gbp_places+licenses.nc_license_trades",
+      "name": "directories.gbp_places+licenses.nc_license_trades",
+      "category": "rescore",
+      "count": 35,
+      "outcome": "OK",
+      "reason": "rescore (no scrape)"
     },
     {
       "slug": "licenses.nc_license_trades",
-      "name": "NC Plumbing/HVAC License Board (roster + owner/contact)",
-      "category": "license",
-      "count": 535,
+      "name": "licenses.nc_license_trades",
+      "category": "rescore",
+      "count": 498,
       "outcome": "OK",
-      "reason": ""
-    },
-    {
-      "slug": "directories.census_cbp",
-      "name": "Census County Business Patterns (density)",
-      "category": "directory",
-      "count": 0,
-      "outcome": "ZERO_RESULT",
-      "reason": "ran clean but returned 0 rows"
+      "reason": "rescore (no scrape)"
     },
     {
       "slug": "directories.gbp_places",
-      "name": "Google Business Profiles (service trades)",
-      "category": "directory",
-      "count": 0,
-      "outcome": "TIMEOUT",
-      "reason": "exceeded soft timeout 600s"
+      "name": "directories.gbp_places",
+      "category": "rescore",
+      "count": 1523,
+      "outcome": "OK",
+      "reason": "rescore (no scrape)"
     },
     {
-      "slug": "directories.yellowpages",
-      "name": "YellowPages (service trades, review counts)",
-      "category": "directory",
-      "count": 0,
-      "outcome": "TIMEOUT",
-      "reason": "exceeded soft timeout 900s"
+      "slug": "marketplaces.craigslist_fsbo",
+      "name": "marketplaces.craigslist_fsbo",
+      "category": "rescore",
+      "count": 8,
+      "outcome": "OK",
+      "reason": "rescore (no scrape)"
+    },
+    {
+      "slug": "sba_foia",
+      "name": "sba_foia",
+      "category": "rescore",
+      "count": 1673,
+      "outcome": "OK",
+      "reason": "rescore (no scrape)"
     }
   ]
 }

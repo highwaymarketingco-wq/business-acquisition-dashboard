@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-06-28T07:19:07.202802Z",
-  "total_targets": 4892,
+  "generated_at": "2026-06-28T15:20:26.910146Z",
+  "total_targets": 6339,
   "tier_histogram": {
     "HOT": 0,
-    "WARM": 945,
-    "COLD": 3947
+    "WARM": 971,
+    "COLD": 5368
   },
   "source_status": [
     {
@@ -35,7 +35,7 @@
       "slug": "directories.gbp_places+licenses.nc_license_trades",
       "name": "directories.gbp_places+licenses.nc_license_trades",
       "category": "yp-merge",
-      "count": 35,
+      "count": 33,
       "outcome": "OK",
       "reason": "YP review enrich"
     },
@@ -43,7 +43,23 @@
       "slug": "licenses.nc_license_trades",
       "name": "licenses.nc_license_trades",
       "category": "yp-merge",
-      "count": 498,
+      "count": 494,
+      "outcome": "OK",
+      "reason": "YP review enrich"
+    },
+    {
+      "slug": "directories.yellowpages+licenses.nc_license_trades",
+      "name": "directories.yellowpages+licenses.nc_license_trades",
+      "category": "yp-merge",
+      "count": 4,
+      "outcome": "OK",
+      "reason": "YP review enrich"
+    },
+    {
+      "slug": "directories.gbp_places+licenses.nc_license_trades+directories.yellowpages",
+      "name": "directories.gbp_places+licenses.nc_license_trades+directories.yellowpages",
+      "category": "yp-merge",
+      "count": 2,
       "outcome": "OK",
       "reason": "YP review enrich"
     },
@@ -51,7 +67,7 @@
       "slug": "directories.gbp_places",
       "name": "directories.gbp_places",
       "category": "yp-merge",
-      "count": 1468,
+      "count": 1379,
       "outcome": "OK",
       "reason": "YP review enrich"
     },
@@ -59,7 +75,7 @@
       "slug": "directories.gbp_places+directories.yellowpages",
       "name": "directories.gbp_places+directories.yellowpages",
       "category": "yp-merge",
-      "count": 52,
+      "count": 135,
       "outcome": "OK",
       "reason": "YP review enrich"
     },
@@ -67,7 +83,15 @@
       "slug": "directories.gbp_places+directories.yellowpages+directories.yellowpages",
       "name": "directories.gbp_places+directories.yellowpages+directories.yellowpages",
       "category": "yp-merge",
-      "count": 3,
+      "count": 8,
+      "outcome": "OK",
+      "reason": "YP review enrich"
+    },
+    {
+      "slug": "directories.gbp_places+directories.yellowpages+directories.yellowpages+directories.yellowpages",
+      "name": "directories.gbp_places+directories.yellowpages+directories.yellowpages+directories.yellowpages",
+      "category": "yp-merge",
+      "count": 1,
       "outcome": "OK",
       "reason": "YP review enrich"
     },
@@ -75,7 +99,15 @@
       "slug": "directories.yellowpages+sba_foia",
       "name": "directories.yellowpages+sba_foia",
       "category": "yp-merge",
-      "count": 4,
+      "count": 7,
+      "outcome": "OK",
+      "reason": "YP review enrich"
+    },
+    {
+      "slug": "directories.yellowpages+directories.yellowpages+sba_foia",
+      "name": "directories.yellowpages+directories.yellowpages+sba_foia",
+      "category": "yp-merge",
+      "count": 1,
       "outcome": "OK",
       "reason": "YP review enrich"
     },
@@ -83,7 +115,7 @@
       "slug": "directories.yellowpages",
       "name": "directories.yellowpages",
       "category": "yp-merge",
-      "count": 1147,
+      "count": 2594,
       "outcome": "OK",
       "reason": "YP review enrich"
     },
@@ -99,7 +131,7 @@
       "slug": "sba_foia",
       "name": "sba_foia",
       "category": "yp-merge",
-      "count": 1669,
+      "count": 1665,
       "outcome": "OK",
       "reason": "YP review enrich"
     }

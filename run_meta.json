@@ -1,75 +1,107 @@
 {
-  "generated_at": "2026-06-28T04:25:18.793822Z",
-  "total_targets": 3745,
+  "generated_at": "2026-06-28T07:19:07.202802Z",
+  "total_targets": 4892,
   "tier_histogram": {
     "HOT": 0,
-    "WARM": 906,
-    "COLD": 2839
+    "WARM": 945,
+    "COLD": 3947
   },
   "source_status": [
     {
       "slug": "directories.gbp_places+sba_foia+sba_foia",
       "name": "directories.gbp_places+sba_foia+sba_foia",
-      "category": "rescore",
+      "category": "yp-merge",
       "count": 6,
       "outcome": "OK",
-      "reason": "rescore (no scrape)"
+      "reason": "YP review enrich"
     },
     {
       "slug": "directories.gbp_places+sba_foia+licenses.nc_license_trades+sba_foia",
       "name": "directories.gbp_places+sba_foia+licenses.nc_license_trades+sba_foia",
-      "category": "rescore",
+      "category": "yp-merge",
       "count": 1,
       "outcome": "OK",
-      "reason": "rescore (no scrape)"
+      "reason": "YP review enrich"
     },
     {
       "slug": "licenses.nc_license_trades+sba_foia",
       "name": "licenses.nc_license_trades+sba_foia",
-      "category": "rescore",
+      "category": "yp-merge",
       "count": 1,
       "outcome": "OK",
-      "reason": "rescore (no scrape)"
+      "reason": "YP review enrich"
     },
     {
       "slug": "directories.gbp_places+licenses.nc_license_trades",
       "name": "directories.gbp_places+licenses.nc_license_trades",
-      "category": "rescore",
+      "category": "yp-merge",
       "count": 35,
       "outcome": "OK",
-      "reason": "rescore (no scrape)"
+      "reason": "YP review enrich"
     },
     {
       "slug": "licenses.nc_license_trades",
       "name": "licenses.nc_license_trades",
-      "category": "rescore",
+      "category": "yp-merge",
       "count": 498,
       "outcome": "OK",
-      "reason": "rescore (no scrape)"
+      "reason": "YP review enrich"
     },
     {
       "slug": "directories.gbp_places",
       "name": "directories.gbp_places",
-      "category": "rescore",
-      "count": 1523,
+      "category": "yp-merge",
+      "count": 1468,
       "outcome": "OK",
-      "reason": "rescore (no scrape)"
+      "reason": "YP review enrich"
+    },
+    {
+      "slug": "directories.gbp_places+directories.yellowpages",
+      "name": "directories.gbp_places+directories.yellowpages",
+      "category": "yp-merge",
+      "count": 52,
+      "outcome": "OK",
+      "reason": "YP review enrich"
+    },
+    {
+      "slug": "directories.gbp_places+directories.yellowpages+directories.yellowpages",
+      "name": "directories.gbp_places+directories.yellowpages+directories.yellowpages",
+      "category": "yp-merge",
+      "count": 3,
+      "outcome": "OK",
+      "reason": "YP review enrich"
+    },
+    {
+      "slug": "directories.yellowpages+sba_foia",
+      "name": "directories.yellowpages+sba_foia",
+      "category": "yp-merge",
+      "count": 4,
+      "outcome": "OK",
+      "reason": "YP review enrich"
+    },
+    {
+      "slug": "directories.yellowpages",
+      "name": "directories.yellowpages",
+      "category": "yp-merge",
+      "count": 1147,
+      "outcome": "OK",
+      "reason": "YP review enrich"
     },
     {
       "slug": "marketplaces.craigslist_fsbo",
       "name": "marketplaces.craigslist_fsbo",
-      "category": "rescore",
+      "category": "yp-merge",
       "count": 8,
       "outcome": "OK",
-      "reason": "rescore (no scrape)"
+      "reason": "YP review enrich"
     },
     {
       "slug": "sba_foia",
       "name": "sba_foia",
-      "category": "rescore",
-      "count": 1673,
+      "category": "yp-merge",
+      "count": 1669,
       "outcome": "OK",
-      "reason": "rescore (no scrape)"
+      "reason": "YP review enrich"
     }
   ]
 }

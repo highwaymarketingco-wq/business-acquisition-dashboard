@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-06-29T17:07:59.083147Z",
-  "total_targets": 6554,
+  "generated_at": "2026-06-29T17:59:02.982366Z",
+  "total_targets": 6788,
   "tier_histogram": {
     "HOT": 0,
-    "WARM": 972,
-    "COLD": 5582
+    "WARM": 975,
+    "COLD": 5813
   },
   "source_status": [
     {
@@ -43,7 +43,7 @@
       "slug": "licenses.nc_license_trades",
       "name": "licenses.nc_license_trades",
       "category": "nclbgc-merge",
-      "count": 480,
+      "count": 479,
       "outcome": "OK",
       "reason": "NCLBGC tenure merge"
     },
@@ -56,8 +56,24 @@
       "reason": "NCLBGC tenure merge"
     },
     {
-      "slug": "directories.gbp_places+licenses.nc_license_trades+licenses.nclbgc",
-      "name": "directories.gbp_places+licenses.nc_license_trades+licenses.nclbgc",
+      "slug": "directories.gbp_places+licenses.nc_license_trades+licenses.nclbgc+licenses.nclbgc",
+      "name": "directories.gbp_places+licenses.nc_license_trades+licenses.nclbgc+licenses.nclbgc",
+      "category": "nclbgc-merge",
+      "count": 1,
+      "outcome": "OK",
+      "reason": "NCLBGC tenure merge"
+    },
+    {
+      "slug": "licenses.nc_license_trades+licenses.nclbgc+licenses.nclbgc",
+      "name": "licenses.nc_license_trades+licenses.nclbgc+licenses.nclbgc",
+      "category": "nclbgc-merge",
+      "count": 9,
+      "outcome": "OK",
+      "reason": "NCLBGC tenure merge"
+    },
+    {
+      "slug": "licenses.nc_license_trades+licenses.nclbgc+licenses.nclbgc+licenses.nclbgc+licenses.nclbgc",
+      "name": "licenses.nc_license_trades+licenses.nclbgc+licenses.nclbgc+licenses.nclbgc+licenses.nclbgc",
       "category": "nclbgc-merge",
       "count": 2,
       "outcome": "OK",
@@ -67,15 +83,15 @@
       "slug": "licenses.nc_license_trades+licenses.nclbgc",
       "name": "licenses.nc_license_trades+licenses.nclbgc",
       "category": "nclbgc-merge",
-      "count": 10,
+      "count": 3,
       "outcome": "OK",
       "reason": "NCLBGC tenure merge"
     },
     {
-      "slug": "licenses.nc_license_trades+licenses.nclbgc+licenses.nclbgc",
-      "name": "licenses.nc_license_trades+licenses.nclbgc+licenses.nclbgc",
+      "slug": "licenses.nc_license_trades+licenses.nclbgc+licenses.nclbgc+licenses.nclbgc",
+      "name": "licenses.nc_license_trades+licenses.nclbgc+licenses.nclbgc+licenses.nclbgc",
       "category": "nclbgc-merge",
-      "count": 4,
+      "count": 1,
       "outcome": "OK",
       "reason": "NCLBGC tenure merge"
     },
@@ -84,6 +100,14 @@
       "name": "directories.gbp_places+licenses.nc_license_trades+directories.yellowpages",
       "category": "nclbgc-merge",
       "count": 2,
+      "outcome": "OK",
+      "reason": "NCLBGC tenure merge"
+    },
+    {
+      "slug": "directories.gbp_places+licenses.nc_license_trades+licenses.nclbgc",
+      "name": "directories.gbp_places+licenses.nc_license_trades+licenses.nclbgc",
+      "category": "nclbgc-merge",
+      "count": 1,
       "outcome": "OK",
       "reason": "NCLBGC tenure merge"
     },
@@ -99,7 +123,7 @@
       "slug": "directories.gbp_places+directories.yellowpages",
       "name": "directories.gbp_places+directories.yellowpages",
       "category": "nclbgc-merge",
-      "count": 135,
+      "count": 134,
       "outcome": "OK",
       "reason": "NCLBGC tenure merge"
     },
@@ -120,10 +144,26 @@
       "reason": "NCLBGC tenure merge"
     },
     {
+      "slug": "directories.gbp_places+licenses.nclbgc+licenses.nclbgc",
+      "name": "directories.gbp_places+licenses.nclbgc+licenses.nclbgc",
+      "category": "nclbgc-merge",
+      "count": 1,
+      "outcome": "OK",
+      "reason": "NCLBGC tenure merge"
+    },
+    {
       "slug": "directories.gbp_places+licenses.nclbgc",
       "name": "directories.gbp_places+licenses.nclbgc",
       "category": "nclbgc-merge",
-      "count": 4,
+      "count": 3,
+      "outcome": "OK",
+      "reason": "NCLBGC tenure merge"
+    },
+    {
+      "slug": "directories.gbp_places+directories.yellowpages+licenses.nclbgc",
+      "name": "directories.gbp_places+directories.yellowpages+licenses.nclbgc",
+      "category": "nclbgc-merge",
+      "count": 1,
       "outcome": "OK",
       "reason": "NCLBGC tenure merge"
     },
@@ -152,24 +192,24 @@
       "reason": "NCLBGC tenure merge"
     },
     {
-      "slug": "directories.yellowpages+licenses.nclbgc",
-      "name": "directories.yellowpages+licenses.nclbgc",
-      "category": "nclbgc-merge",
-      "count": 15,
-      "outcome": "OK",
-      "reason": "NCLBGC tenure merge"
-    },
-    {
       "slug": "directories.yellowpages+licenses.nclbgc+licenses.nclbgc",
       "name": "directories.yellowpages+licenses.nclbgc+licenses.nclbgc",
       "category": "nclbgc-merge",
-      "count": 2,
+      "count": 14,
       "outcome": "OK",
       "reason": "NCLBGC tenure merge"
     },
     {
-      "slug": "licenses.nclbgc+sba_foia",
-      "name": "licenses.nclbgc+sba_foia",
+      "slug": "directories.yellowpages+licenses.nclbgc",
+      "name": "directories.yellowpages+licenses.nclbgc",
+      "category": "nclbgc-merge",
+      "count": 3,
+      "outcome": "OK",
+      "reason": "NCLBGC tenure merge"
+    },
+    {
+      "slug": "licenses.nclbgc+licenses.nclbgc+sba_foia",
+      "name": "licenses.nclbgc+licenses.nclbgc+sba_foia",
       "category": "nclbgc-merge",
       "count": 1,
       "outcome": "OK",
@@ -179,7 +219,15 @@
       "slug": "licenses.nclbgc",
       "name": "licenses.nclbgc",
       "category": "nclbgc-merge",
-      "count": 215,
+      "count": 449,
+      "outcome": "OK",
+      "reason": "NCLBGC tenure merge"
+    },
+    {
+      "slug": "licenses.nclbgc+sba_foia",
+      "name": "licenses.nclbgc+sba_foia",
+      "category": "nclbgc-merge",
+      "count": 1,
       "outcome": "OK",
       "reason": "NCLBGC tenure merge"
     },
@@ -195,7 +243,7 @@
       "slug": "sba_foia",
       "name": "sba_foia",
       "category": "nclbgc-merge",
-      "count": 1664,
+      "count": 1663,
       "outcome": "OK",
       "reason": "NCLBGC tenure merge"
     }
